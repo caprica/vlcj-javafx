@@ -15,6 +15,16 @@ JavaFX 13.
 
 ### Usage
 
+Add this Maven dependency:
+
+```
+<dependency>
+    <groupId>uk.co.caprica</groupId>
+    <artifactId>vlcj-javafx</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
 With vlcj-4.x+ it is _very_ easy to use vlcj with JavaFX.
 
 The only thing required is to create a video surface component specifically for JavaFX (using an ImageView).
