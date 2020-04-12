@@ -1,0 +1,246 @@
+<!--
+    vlcj-javafx pom.
+
+    Add the following content to your own project pom.xml file:
+
+    <dependencies>
+        <dependency>
+            <groupId>uk.co.caprica</groupId>
+            <artifactId>vlcj-javafx</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uk.co.caprica</groupId>
+    <artifactId>vlcj-javafx</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>vlcj-javafx</name>
+    <description>JavaFX support classes for vlcj.</description>
+    <url>http://capricasoftware.co.uk/projects/vlcj-javafx</url>
+    <inceptionYear>2020</inceptionYear>
+
+    <packaging>jar</packaging>
+
+    <licenses>
+        <license>
+            <name>GPL v3</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Caprica Software Limited</name>
+        <url>http://www.capricasoftware.co.uk</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>mark</id>
+            <name>Mark Lee</name>
+            <email>mark.lee@capricasoftware.co.uk</email>
+            <url>https://github.com/caprica/vlcj-javafx</url>
+            <organization>Caprica Software Limited</organization>
+            <organizationUrl>http://www.capricasoftware.co.uk</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+                <role>owner</role>
+            </roles>
+            <timezone>0</timezone>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/caprica/vlcj-javafx/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:caprica/vlcj-javafx.git</connection>
+        <developerConnection>scm:git:git@github.com:caprica/vlcj-javafx.git</developerConnection>
+        <url>git@github.com:caprica/vlcj-javafx.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
+        <openJfx.version>14</openJfx.version>
+        <vlcj.version>4.4.0</vlcj.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${openJfx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.caprica</groupId>
+            <artifactId>vlcj</artifactId>
+            <version>${vlcj.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>enforce</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgument>-Xlint:serial</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <author>true</author>
+                    <charset>UTF-8</charset>
+                    <doctitle>${project.name} ${project.version} API Documentation</doctitle>
+                    <docfilessubdirs>true</docfilessubdirs>
+                    <encoding>UTF-8</encoding>
+                    <footer>(C)2020 Caprica Software Limited</footer>
+                    <show>public</show>
+                    <quiet>true</quiet>
+                    <failOnError>true</failOnError>
+                    <additionalOptions>-html5</additionalOptions>
+                    <source>11</source>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>.gitignore</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
