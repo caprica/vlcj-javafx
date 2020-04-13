@@ -3,4 +3,5 @@ module uk.co.caprica.vlcj.javafx {
     requires uk.co.caprica.vlcj;
 
     exports uk.co.caprica.vlcj.javafx.videosurface;
+    exports uk.co.caprica.vlcj.javafx.view;
 }
