@@ -78,7 +78,7 @@
 
     <properties>
         <openJfx.version>14</openJfx.version>
-        <vlcj.version>4.5.0-SNAPSHOT</vlcj.version>
+        <vlcj.version>4.5.0</vlcj.version>
     </properties>
 
     <dependencies>
