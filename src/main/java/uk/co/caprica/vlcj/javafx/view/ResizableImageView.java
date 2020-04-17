@@ -35,6 +35,10 @@ import uk.co.caprica.vlcj.player.base.MediaPlayer;
  * resizes).
  * <p>
  * An ordinary image view can does not itself support rescaling the image on a resize event.
+ * <p>
+ * A good alternative to using this class, and arguably a simpler solution, is to override layoutChildren in your own
+ * component and have it size the {@link ImageView} to the container width. You can then position whatever other child
+ * components you may have on top of it.
  */
 public class ResizableImageView extends Pane {
 
@@ -80,6 +84,9 @@ public class ResizableImageView extends Pane {
         imageView.setFitWidth(width);
         imageView.setFitHeight(height);
         layoutInArea(imageView, 0, 0, width, height, 0, HPos.CENTER, VPos.CENTER);
+        // The super call is required if you ever need to add child components to the view - without it the child
+        // components may appear but they will not be sized properly (manifesting e.g. as a 0x0 background)
+        super.layoutChildren();
     }
 
     protected void onNewSize() {
