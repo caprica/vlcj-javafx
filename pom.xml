@@ -77,7 +77,7 @@
     </distributionManagement>
 
     <properties>
-        <openJfx.version>14</openJfx.version>
+        <openJfx.version>14.0.1</openJfx.version>
         <vlcj.version>4.5.0</vlcj.version>
     </properties>
 
