@@ -34,7 +34,7 @@ import uk.co.caprica.vlcj.player.base.MediaPlayer;
  * keep that video surface properly scaled and centered in a JavaFX view component by responding to various events (like
  * resizes).
  * <p>
- * An ordinary image view can does not itself support rescaling the image on a resize event.
+ * An ordinary image view does not itself support rescaling the image on a resize event.
  * <p>
  * A good alternative to using this class, and arguably a simpler solution, is to override layoutChildren in your own
  * component and have it size the {@link ImageView} to the container width. You can then position whatever other child
