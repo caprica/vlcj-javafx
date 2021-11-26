@@ -4,7 +4,7 @@ Support classes to help use [vlcj](https://github.com/caprica/vlcj) in a JavaFX 
 
 ## Requirements
 
-Java 11 and JavaFX 14 are the baseline.
+Java 11 and JavaFX 13 are the baseline.
 
 ## Video Surface
 
@@ -17,11 +17,22 @@ JavaFX 13.
 
 Add this Maven dependency:
 
-```
+```xml
 <dependency>
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
+</dependency>
+```
+
+You are also expected to declare your own dependency on whatever JavaFX version you want (must be at least 13), for
+example:
+
+```xml
+<dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-graphics</artifactId>
+    <version>17.0.1</version>
 </dependency>
 ```
 

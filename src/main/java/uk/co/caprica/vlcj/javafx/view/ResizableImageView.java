@@ -48,6 +48,11 @@ public class ResizableImageView extends Pane {
 
     private double previousHeight = -1;
 
+    /**
+     * Create a new resizable image view.
+     *
+     * @param imageView image view to adorn with resizing behaviour
+     */
     public ResizableImageView(ImageView imageView) {
         this.imageView = imageView;
         getChildren().add(imageView);
