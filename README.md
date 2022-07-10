@@ -21,7 +21,7 @@ Add this Maven dependency:
 <dependency>
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -43,14 +43,14 @@ The only thing required is to create a video surface component specifically for 
 This video surface is set on the vlcj media player, as shown in the code fragment:
 
 ```
-    import static uk.co.caprica.vlcj.javafx.videosurface.ImageViewVideoSurfaceFactory.videoSurfaceForImageView;
+    import static uk.co.caprica.vlcj.javafx.videosurface.ImageViewVideoSurface;
 
     ...
 
     MediaPlayerFactory factory = new MediaPlayerFactory();
     EmbeddedMediaPlayer mediaPlayer = mediaPlayerFactory.mediaPlayers().newEmbeddedMediaPlayer();
 
-    mediaPlayer.videoSurface().set(videoSurfaceForImageView(this.videoImageView));
+    mediaPlayer.videoSurface().set(new ImageViewVideoSurface(this.videoImageView));
 ```
 
 That's it!

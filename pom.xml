@@ -7,7 +7,7 @@
         <dependency>
             <groupId>uk.co.caprica</groupId>
             <artifactId>vlcj-javafx</artifactId>
-            <version>1.0.3</version>
+            <version>1.1.0</version>
         </dependency>
     </dependencies>
 -->
@@ -18,7 +18,7 @@
 
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
 
     <name>vlcj-javafx</name>
     <description>JavaFX support classes for vlcj.</description>
@@ -66,7 +66,7 @@
         <connection>scm:git:git@github.com:caprica/vlcj-javafx.git</connection>
         <developerConnection>scm:git:git@github.com:caprica/vlcj-javafx.git</developerConnection>
         <url>git@github.com:caprica/vlcj-javafx.git</url>
-        <tag>vlcj-javafx-1.0.3</tag>
+        <tag>vlcj-javafx-1.1.0</tag>
     </scm>
 
     <distributionManagement>
@@ -79,7 +79,7 @@
     <properties>
         <javaVersion>11</javaVersion>
         <openJfx.version>[13,)</openJfx.version>
-        <vlcj.version>4.7.1</vlcj.version>
+        <vlcj.version>4.7.3</vlcj.version>
     </properties>
 
     <dependencies>
@@ -129,7 +129,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -137,7 +137,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.10.1</version>
                 <configuration>
                     <source>${javaVersion}</source>
                     <target>${javaVersion}}</target>
@@ -175,7 +175,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.4.0</version>
                 <configuration>
                     <author>true</author>
                     <charset>UTF-8</charset>

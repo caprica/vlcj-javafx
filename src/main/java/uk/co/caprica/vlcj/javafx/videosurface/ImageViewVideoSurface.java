@@ -37,34 +37,37 @@ import java.nio.ByteBuffer;
 import static uk.co.caprica.vlcj.player.embedded.videosurface.VideoSurfaceAdapters.getVideoSurfaceAdapter;
 
 /**
- * Factory used to create a vlcj {@link VideoSurface} component for a JavaFX {@link ImageView}.
- * <p>
- * Developer note: the imageView reference will keep this factory object alive.
+ * A vlcj {@link VideoSurface} component for a JavaFX {@link ImageView}, using
+ * {@link PixelBuffer}.
  */
-public final class ImageViewVideoSurfaceFactory {
+public final class ImageViewVideoSurface extends VideoSurface {
 
     private final ImageView imageView;
+
     private final PixelBufferBufferFormatCallback bufferFormatCallback;
+
     private final PixelBufferRenderCallback renderCallback;
+
     private final PixelBufferVideoSurface videoSurface;
 
     private PixelBuffer<ByteBuffer> pixelBuffer;
 
     /**
-     * Get a new {@link VideoSurface} for an {@link ImageView}.
+     * Create a new {@link VideoSurface} for an {@link ImageView}.
      *
      * @param imageView image view used to render the video
-     * @return video surface
      */
-    public static VideoSurface videoSurfaceForImageView(ImageView imageView) {
-        return new ImageViewVideoSurfaceFactory(imageView).videoSurface;
-    }
-
-    private ImageViewVideoSurfaceFactory(ImageView imageView) {
+    public ImageViewVideoSurface(ImageView imageView) {
+        super(getVideoSurfaceAdapter());
         this.imageView = imageView;
         this.bufferFormatCallback = new PixelBufferBufferFormatCallback();
         this.renderCallback = new PixelBufferRenderCallback();
         this.videoSurface = new PixelBufferVideoSurface();
+    }
+
+    @Override
+    public void attach(MediaPlayer mediaPlayer) {
+        this.videoSurface.attach(mediaPlayer);
     }
 
     private class PixelBufferBufferFormatCallback implements BufferFormatCallback {
@@ -97,8 +100,8 @@ public final class ImageViewVideoSurfaceFactory {
     private class PixelBufferVideoSurface extends CallbackVideoSurface {
         private PixelBufferVideoSurface() {
             super(
-                ImageViewVideoSurfaceFactory.this.bufferFormatCallback,
-                ImageViewVideoSurfaceFactory.this.renderCallback,
+                ImageViewVideoSurface.this.bufferFormatCallback,
+                ImageViewVideoSurface.this.renderCallback,
                 true,
                 getVideoSurfaceAdapter()
             );
