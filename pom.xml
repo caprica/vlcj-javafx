@@ -18,7 +18,7 @@
 
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1-SNAPSHOT</version>
 
     <name>vlcj-javafx</name>
     <description>JavaFX support classes for vlcj.</description>
