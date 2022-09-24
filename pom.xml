@@ -159,7 +159,7 @@
                     <failOnError>true</failOnError>
                     <additionalOptions>-html5</additionalOptions>
                     <source>${java.version}</source>
-                    <sourcepath>src/main/resources</sourcepath>
+                    <sourcepath>src/main/java</sourcepath>
                 </configuration>
                 <executions>
                     <execution>
