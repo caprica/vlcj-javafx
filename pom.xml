@@ -78,11 +78,11 @@
 
     <properties>
         <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <openJfx.version>[13,)</openJfx.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <openJfx.version>19</openJfx.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vlcj.version>4.8.0</vlcj.version>
+        <vlcj.version>5.0.0-SNAPSHOT</vlcj.version>
     </properties>
 
     <dependencies>
@@ -90,7 +90,6 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>${openJfx.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>uk.co.caprica</groupId>

@@ -30,7 +30,8 @@ import uk.co.caprica.vlcj.player.embedded.videosurface.VideoSurface;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.BufferFormat;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.BufferFormatCallback;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.RenderCallback;
-import uk.co.caprica.vlcj.player.embedded.videosurface.callback.format.RV32BufferFormat;
+import uk.co.caprica.vlcj.player.embedded.videosurface.callback.format.StandardAlphaBufferFormat;
+import uk.co.caprica.vlcj.player.embedded.videosurface.callback.format.StandardOpaqueBufferFormat;
 
 import java.nio.ByteBuffer;
 
@@ -44,6 +45,8 @@ public final class ImageViewVideoSurface extends VideoSurface {
 
     private final ImageView imageView;
 
+    private final boolean alpha;
+
     private final PixelBufferBufferFormatCallback bufferFormatCallback;
 
     private final PixelBufferRenderCallback renderCallback;
@@ -54,12 +57,27 @@ public final class ImageViewVideoSurface extends VideoSurface {
 
     /**
      * Create a new {@link VideoSurface} for an {@link ImageView}.
+     * <p>
+     * An opaque pixel format will be used, RV24 (24-bit RGB).
      *
      * @param imageView image view used to render the video
      */
     public ImageViewVideoSurface(ImageView imageView) {
+        this(imageView, false);
+    }
+
+    /**
+     * Create a new {@link VideoSurface} for an {@link ImageView}.
+     * <p>
+     * If selected, the alpha format will be BGRA (32-but BGRA).
+     *
+     * @param imageView image view used to render the video
+     * @param alpha whether a colour format with alpha should be used or not
+     */
+    public ImageViewVideoSurface(ImageView imageView, boolean alpha) {
         super(getVideoSurfaceAdapter());
         this.imageView = imageView;
+        this.alpha = alpha;
         this.bufferFormatCallback = new PixelBufferBufferFormatCallback();
         this.renderCallback = new PixelBufferRenderCallback();
         this.videoSurface = new PixelBufferVideoSurface();
@@ -79,12 +97,16 @@ public final class ImageViewVideoSurface extends VideoSurface {
         public BufferFormat getBufferFormat(int sourceWidth, int sourceHeight) {
             this.sourceWidth = sourceWidth;
             this.sourceHeight = sourceHeight;
-            return new RV32BufferFormat(sourceWidth, sourceHeight);
+            return alpha ?
+                new StandardAlphaBufferFormat(sourceWidth, sourceHeight) :
+                new StandardOpaqueBufferFormat(sourceWidth, sourceHeight);
         }
 
         @Override
         public void allocatedBuffers(ByteBuffer[] buffers) {
-            PixelFormat<ByteBuffer> pixelFormat = PixelFormat.getByteBgraPreInstance();
+            PixelFormat<ByteBuffer> pixelFormat = alpha ?
+                PixelFormat.getByteBgraPreInstance() :
+                PixelFormat.getByteRgbInstance();
             pixelBuffer = new PixelBuffer<>(sourceWidth, sourceHeight, buffers[0], pixelFormat);
             imageView.setImage(new WritableImage(pixelBuffer));
         }
