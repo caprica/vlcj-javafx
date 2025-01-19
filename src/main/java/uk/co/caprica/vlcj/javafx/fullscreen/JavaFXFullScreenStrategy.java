@@ -27,7 +27,7 @@ import uk.co.caprica.vlcj.player.embedded.fullscreen.FullScreenStrategy;
  * <p>
  * This is a cross-platform strategy.
  */
-public class JavaFXFullScreenStrategy implements FullScreenStrategy  {
+public class JavaFXFullScreenStrategy implements FullScreenStrategy {
 
     /**
      * Stage to switch to full screen.
