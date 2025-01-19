@@ -21,7 +21,7 @@ Add this Maven dependency:
 <dependency>
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 

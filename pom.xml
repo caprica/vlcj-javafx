@@ -7,7 +7,7 @@
         <dependency>
             <groupId>uk.co.caprica</groupId>
             <artifactId>vlcj-javafx</artifactId>
-            <version>1.2.0</version>
+            <version>1.3.0</version>
         </dependency>
     </dependencies>
 -->
@@ -18,7 +18,7 @@
 
     <groupId>uk.co.caprica</groupId>
     <artifactId>vlcj-javafx</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.3.0-SNAPSHOT</version>
 
     <name>vlcj-javafx</name>
     <description>JavaFX support classes for vlcj.</description>
@@ -152,7 +152,7 @@
                     <doctitle>${project.name} ${project.version} API Documentation</doctitle>
                     <docfilessubdirs>true</docfilessubdirs>
                     <encoding>UTF-8</encoding>
-                    <bottom>(C)2021 Caprica Software Limited</bottom>
+                    <bottom>(C)2021-2025 Caprica Software Limited</bottom>
                     <show>public</show>
                     <quiet>true</quiet>
                     <failOnError>true</failOnError>
