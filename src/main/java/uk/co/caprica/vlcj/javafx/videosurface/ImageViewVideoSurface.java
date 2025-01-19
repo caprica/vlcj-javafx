@@ -30,8 +30,6 @@ import uk.co.caprica.vlcj.player.embedded.videosurface.VideoSurface;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.BufferFormat;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.BufferFormatCallback;
 import uk.co.caprica.vlcj.player.embedded.videosurface.callback.RenderCallback;
-import uk.co.caprica.vlcj.player.embedded.videosurface.callback.format.StandardAlphaBufferFormat;
-import uk.co.caprica.vlcj.player.embedded.videosurface.callback.format.StandardOpaqueBufferFormat;
 
 import java.nio.ByteBuffer;
 
@@ -82,7 +80,7 @@ public final class ImageViewVideoSurface extends VideoSurface {
         public BufferFormat getBufferFormat(int sourceWidth, int sourceHeight) {
             this.sourceWidth = sourceWidth;
             this.sourceHeight = sourceHeight;
-            return new StandardAlphaBufferFormat(sourceWidth, sourceHeight);
+            return new PixelBufferBufferFormat(sourceWidth, sourceHeight);
         }
 
         @Override
