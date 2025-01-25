@@ -77,10 +77,14 @@ public final class ImageViewVideoSurface extends VideoSurface {
         private int sourceHeight;
 
         @Override
-        public BufferFormat getBufferFormat(int sourceWidth, int sourceHeight) {
-            this.sourceWidth = sourceWidth;
-            this.sourceHeight = sourceHeight;
+        public BufferFormat getBufferFormat(int[] width, int[] height) {
+            this.sourceWidth = width[0];
+            this.sourceHeight = height[0];
             return new PixelBufferBufferFormat(sourceWidth, sourceHeight);
+        }
+
+        @Override
+        public void newFormatSize(int bufferWidth, int bufferHeight, int displayWidth, int displayHeight) {
         }
 
         @Override
@@ -94,8 +98,16 @@ public final class ImageViewVideoSurface extends VideoSurface {
 
     private class PixelBufferRenderCallback implements RenderCallback {
         @Override
+        public void lock(MediaPlayer mediaPlayer) {
+        }
+
+        @Override
         public void display(MediaPlayer mediaPlayer, ByteBuffer[] nativeBuffers, BufferFormat bufferFormat) {
             Platform.runLater(() -> pixelBuffer.updateBuffer(pb -> null));
+        }
+
+        @Override
+        public void unlock(MediaPlayer mediaPlayer) {
         }
     }
 
