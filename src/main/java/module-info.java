@@ -2,7 +2,6 @@
  * vlcj-javafx module.
  */
 module uk.co.caprica.vlcj.javafx {
-    requires java.desktop;
     requires javafx.graphics;
     requires uk.co.caprica.vlcj;
 
