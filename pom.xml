@@ -69,6 +69,33 @@
         <tag>HEAD</tag>
     </scm>
 
+    <profiles>
+        <profile>
+            <id>sonatype</id>
+            <properties>
+                <gpg.skip>false</gpg.skip>
+            </properties>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>github</id>
+            <properties>
+                <gpg.skip>false</gpg.skip>
+            </properties>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/caprica/vlcj</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -77,9 +104,9 @@
     </distributionManagement>
 
     <properties>
+        <gpg.skip>true</gpg.skip>
         <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <openJfx.version>19</openJfx.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vlcj.version>5.0.0-SNAPSHOT</vlcj.version>
