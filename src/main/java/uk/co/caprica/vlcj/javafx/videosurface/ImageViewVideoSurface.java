@@ -102,7 +102,7 @@ public final class ImageViewVideoSurface extends VideoSurface {
         }
 
         @Override
-        public void display(MediaPlayer mediaPlayer, ByteBuffer[] nativeBuffers, BufferFormat bufferFormat) {
+        public void display(MediaPlayer mediaPlayer, ByteBuffer[] nativeBuffers, BufferFormat bufferFormat, int displayWidth, int displayHeight) {
             Platform.runLater(() -> pixelBuffer.updateBuffer(pb -> null));
         }
 
