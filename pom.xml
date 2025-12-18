@@ -77,12 +77,13 @@
     </distributionManagement>
 
     <properties>
+        <doclint>none</doclint>
+        <gpg.skip>true</gpg.skip>
         <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <openJfx.version>13.0.2</openJfx.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vlcj.version>4.11.0</vlcj.version>
+        <vlcj.version>4.12.1</vlcj.version>
     </properties>
 
     <dependencies>
@@ -104,7 +105,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -112,7 +113,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <compilerArgument>-Xlint:serial</compilerArgument>
                 </configuration>
@@ -120,7 +121,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.2</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -132,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -146,14 +147,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.4.1</version>
                 <configuration>
                     <author>true</author>
                     <charset>UTF-8</charset>
                     <doctitle>${project.name} ${project.version} API Documentation</doctitle>
                     <docfilessubdirs>true</docfilessubdirs>
                     <encoding>UTF-8</encoding>
-                    <bottom>(C)2021 Caprica Software Limited</bottom>
+                    <bottom>(C)2025 Caprica Software Limited</bottom>
                     <show>public</show>
                     <quiet>true</quiet>
                     <failOnError>true</failOnError>
@@ -185,14 +186,13 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.5.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
             <plugin>
@@ -204,6 +204,7 @@
                     <useReleaseProfile>false</useReleaseProfile>
                     <releaseProfiles>release</releaseProfiles>
                     <goals>deploy</goals>
+                    <arguments>-Dgpg.skip=false</arguments>
                 </configuration>
             </plugin>
         </plugins>
